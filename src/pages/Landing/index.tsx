@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Image, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
@@ -9,9 +9,18 @@ import giveClassesIcon from "../../assets/images/icons/give-classes.png";
 import HeartIcon from "../../assets/images/icons/heart.png";
 
 import styles from "./styles";
+import api from "../../services/api";
 
 function Landing() {
   const { navigate } = useNavigation();
+  const [totalConnection, setTotalConnection] = useState(0);
+
+  useEffect(() => {
+    api.get("connections").then((response) => {
+      const { total } = response.data;
+      setTotalConnection(total);
+    });
+  }, []);
 
   const handleNavigateToGiveClassesPage = () => {
     navigate("GiveClasses");
@@ -47,8 +56,19 @@ function Landing() {
       </View>
 
       <Text style={styles.totalConnection}>
-        Total de 255 conexão realizados <Image source={HeartIcon} />
+        Total de {totalConnection} conexão realizados{" "}
+        <Image source={HeartIcon} />
       </Text>
+
+      <View style={styles.footer}>
+        <Text style={[styles.message, styles.footerText]}>
+          Criado com muito prazer na NLW#02
+        </Text>
+        <Text style={[styles.developer, styles.footerText]}>
+          Paulo Spiguel & Rocketseat
+        </Text>
+        <Text style={[styles.versao, styles.footerText]}>Versão 1.0</Text>
+      </View>
     </View>
   );
 }

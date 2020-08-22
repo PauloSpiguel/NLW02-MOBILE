@@ -5,7 +5,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#8257e5",
     flex: 1,
     justifyContent: "center",
-    padding: 40,
+    paddingTop: 40,
+    paddingBottom: 10,
+    paddingHorizontal: 40,
   },
   banner: {
     width: "100%",
@@ -33,6 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 24,
     justifyContent: "space-between",
+    alignItems: "center",
   },
   buttonPrimary: {
     backgroundColor: "#9871f5",
@@ -50,8 +53,21 @@ const styles = StyleSheet.create({
     color: "#d4c2ff",
     fontSize: 12,
     lineHeight: 20,
-    maxWidth: 140,
     marginTop: 40,
+    textAlign: "center",
+  },
+  footer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    marginTop: 0,
+  },
+  footerText: {
+    fontSize: 12,
+    color: "#d4c2ff",
+    fontFamily: "Poppins_400Regular",
+    lineHeight: 16,
+    opacity: 0.6,
   },
 });
 
